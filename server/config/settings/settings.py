@@ -19,7 +19,7 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 # Databases settings (with docker)
 ##################################################################
 
-DATABASES = {}
+#DATABASES = {}
 
 ##################################################################
 # Caches settings
@@ -134,22 +134,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 FILE_UPLOAD_PERMISSIONS = 0o777
 FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o777
 
-##################################################################
-# Debug toolbar settings
-##################################################################
-
-if DEBUG:
-    from .installed_apps import *
-
-    def show_toolbar(request):
-        from django.conf import settings
-        return settings.DEBUG
-
-    DEBUG_TOOLBAR_CONFIG = {
-        "SHOW_TOOLBAR_CALLBACK": show_toolbar,
-    }
-    MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware', ] + MIDDLEWARE
-    INSTALLED_APPS += ('debug_toolbar',)
 
 ##################################################################
 # REST framework settings
