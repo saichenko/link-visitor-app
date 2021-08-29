@@ -19,7 +19,7 @@ def extract_domains(urls: typing.Iterable) -> typing.Tuple[str]:
 
 
 class VisitedLinksSerializer(serializers.Serializer):
-    """Serializer for many links."""
+    """Serializer for visiting links."""
 
     links = serializers.ListField(
         child=serializers.CharField()
