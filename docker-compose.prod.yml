@@ -1,0 +1,31 @@
+version: '3'
+services:
+    nginx:
+        build:
+            context: ./
+            dockerfile: ./nginx/Dockerfile
+        depends_on:
+            - server
+        ports:
+            - 80:80
+        volumes:
+            - ./server/media:/nginx/media
+
+    server:
+        build:
+            context: ./
+            dockerfile: ./server/Dockerfile
+        command: gunicorn config.wsgi -c ./config/gunicorn.py
+        volumes:
+            - ./server/media:/server/media
+        depends_on:
+            - redis
+        environment:
+            DEBUG: 'False'
+            DATABASE_URL: 'postgres://postgres:@db:5432/postgres'
+            BROKER_URL: 'amqp://user:password@rabbitmq:5672/my_vhost'
+
+    redis:
+        image: "redis:6"
+        ports:
+            - "6379:6379"

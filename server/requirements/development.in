@@ -1,0 +1,20 @@
+Django
+djangorestframework
+
+# http сервер, который свзявает nginx с django приложением
+gunicorn
+
+# отладка программ
+ipdb
+
+# Redis бэкенд для Django
+django-redis
+
+# приятная работа в shell
+ipython
+
+# UI панель для отладки
+django-debug-toolbar
+
+# улучшенные фильтры для DRF
+django-url-filter
