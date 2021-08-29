@@ -19,7 +19,7 @@ def extract_domains(urls: typing.Iterable) -> typing.Tuple[str]:
 
 
 class VisitedLinksSerializer(serializers.Serializer):
-    """Serializer for visiting links."""
+    """Serializer for creating visiting links."""
 
     links = serializers.ListField(
         child=serializers.CharField()
@@ -29,7 +29,7 @@ class VisitedLinksSerializer(serializers.Serializer):
     )
 
     def create(self, validated_data: dict) -> dict:
-        """Save links to Redis.
+        """Save domains to Redis.
 
         Saving patterns for links:
             `domain:<pk>:name`: Domain name. For example `google.com`.
@@ -37,13 +37,12 @@ class VisitedLinksSerializer(serializers.Serializer):
         """
         domains = extract_domains(validated_data['links'])
         for domain in domains:
-            primary_key = cache.incr('domain:id')
+            primary_key = cache.incr('domains-id')
             pattern = f'domain:{primary_key}:'
-            cache.set(f'{pattern}name', domain)
-            cache.set(
-                f'{pattern}visited_at',
-                validated_data['visited_at']
-            )
+            cache.set_many({
+                f'{pattern}name': domain,
+                f'{pattern}visited_at': validated_data['visited_at']
+            })
         return validated_data
 
     def update(self, instance, validated_data):
