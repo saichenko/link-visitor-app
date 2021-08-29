@@ -10,7 +10,7 @@ INSTALLED_APPS = (
 )
 
 LOCAL_APPS = (
-
+    'apps.links',
 )
 
 INSTALLED_APPS += LOCAL_APPS
