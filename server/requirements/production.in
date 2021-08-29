@@ -12,3 +12,6 @@ django-url-filter
 
 # Redis бэкенд для Django
 django-redis
+
+# Продвинутый сепаратор URLов
+tldextract

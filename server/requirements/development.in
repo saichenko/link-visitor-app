@@ -18,3 +18,6 @@ django-debug-toolbar
 
 # улучшенные фильтры для DRF
 django-url-filter
+
+# Продвинутый сепаратор URLов
+tldextract
