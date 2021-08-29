@@ -8,4 +8,9 @@ router.register(
     viewsets.VisitedLinksViewSet,
     basename="visited-links"
 )
+router.register(
+    r"visited-domains",
+    viewsets.VisitedDomainsViewSet,
+    basename="visited-domains"
+)
 urlpatterns = router.urls
