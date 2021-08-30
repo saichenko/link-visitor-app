@@ -11,6 +11,13 @@ class VisitedLinksViewSet(GenericViewSet, CreateModelMixin):
 
     serializer_class = VisitedLinksSerializer
 
+    def create(self, request, *args, **kwargs) -> Response:
+        """Create links and return Response with {'status': 'ok'} on success.
+        Used to avoid returning created links in response.
+        """
+        super().create(request, *args, **kwargs)
+        return Response({'status': 'ok'}, status=200)
+
 
 class VisitedDomainsViewSet(GenericViewSet, ListModelMixin):
     """Listing visited domains."""
