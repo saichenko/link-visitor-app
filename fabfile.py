@@ -25,10 +25,5 @@ def pip_compile_prod():
           "pip-compile --generate-hashes requirements/production.in")
 
 
-def test():
-    local("docker exec -it $(docker ps | grep server_ | awk '{{ print $1 }}') "
-          "pytest -v")
-
-
 def kill():
     local("docker kill $(docker ps -q)")
