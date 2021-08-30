@@ -1,17 +1,25 @@
 Django
 djangorestframework
 
+# Джанговский плагин для Pytest
+# https://pytest-django.readthedocs.io/en/latest/
+pytest-django
+
 # http сервер, который свзявает nginx с django приложением
+# https://gunicorn.org/
 gunicorn
 
 # приятная работа в shell
+# https://github.com/ipython/ipython
 ipython
 
 # улучшенные фильтры для DRF
 django-url-filter
 
 # Redis бэкенд для Django
+# https://github.com/jazzband/django-redis
 django-redis
 
 # Продвинутый сепаратор URLов
+# https://github.com/john-kurkowski/tldextract
 tldextract

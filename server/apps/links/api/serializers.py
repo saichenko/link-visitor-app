@@ -43,6 +43,7 @@ class VisitedLinksSerializer(serializers.Serializer):
                 f'{pattern}name': domain,
                 f'{pattern}visited_at': validated_data['visited_at']
             })
+        validated_data['links'] = domains
         return validated_data
 
     def update(self, instance, validated_data):
