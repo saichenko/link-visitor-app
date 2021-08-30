@@ -20,19 +20,14 @@ def pip_compile_dev():
           "pip-compile --generate-hashes requirements/development.in")
 
 
-def pip_sync_dev():
-    local("docker exec -i $(docker ps | grep server_ | awk '{{ print $1 }}') "
-          "pip-sync requirements/development.txt")
-
-
 def pip_compile_prod():
     local("docker exec -i $(docker ps | grep server_ | awk '{{ print $1 }}') "
           "pip-compile --generate-hashes requirements/production.in")
 
 
-def pip_sync_prod():
-    local("docker exec -i $(docker ps | grep server_ | awk '{{ print $1 }}') "
-          "pip-sync requirements/production.txt")
+def test():
+    local("docker exec -it $(docker ps | grep server_ | awk '{{ print $1 }}') "
+          "pytest -v")
 
 
 def kill():
