@@ -37,6 +37,7 @@ class VisitedLinksSerializer(serializers.Serializer):
         """
         domains = extract_domains(validated_data['links'])
         for domain in domains:
+            cache.get_or_set('domains-id', 0)  # Define domains id counter.
             primary_key = cache.incr('domains-id')
             pattern = f'domain:{primary_key}:'
             cache.set_many({
