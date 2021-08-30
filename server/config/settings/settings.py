@@ -1,6 +1,5 @@
 import os
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SECRET_KEY = '9zicr26$recrqtw*nj3=5*d=j(+y(ygk!o0kcv*xddtgibamah'
 ROOT_URLCONF = 'config.urls'
@@ -14,12 +13,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 ##################################################################
 
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
-
-##################################################################
-# Databases settings (with docker)
-##################################################################
-
-DATABASES = {}
 
 ##################################################################
 # Caches settings
@@ -101,16 +94,20 @@ MIDDLEWARE = [
 if not DEBUG:
     AUTH_PASSWORD_VALIDATORS = [
         {
-            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+            'NAME':
+                'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+            'NAME':
+                'django.contrib.auth.password_validation.MinimumLengthValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+            'NAME':
+                'django.contrib.auth.password_validation.CommonPasswordValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+            'NAME':
+                'django.contrib.auth.password_validation.NumericPasswordValidator',
         },
     ]
 
@@ -134,22 +131,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 FILE_UPLOAD_PERMISSIONS = 0o777
 FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o777
 
-##################################################################
-# Debug toolbar settings
-##################################################################
-
-if DEBUG:
-    from .installed_apps import *
-
-    def show_toolbar(request):
-        from django.conf import settings
-        return settings.DEBUG
-
-    DEBUG_TOOLBAR_CONFIG = {
-        "SHOW_TOOLBAR_CALLBACK": show_toolbar,
-    }
-    MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware', ] + MIDDLEWARE
-    INSTALLED_APPS += ('debug_toolbar',)
 
 ##################################################################
 # REST framework settings
@@ -159,13 +140,13 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_FILTER_BACKENDS': (
-        'url_filter.integrations.drf.DjangoFilterBackend',
-    ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'EXCEPTION_HANDLER':
+        'config.settings.exception_handlers.custom_exception_handler',
     'PAGE_SIZE': 20
 }
 
