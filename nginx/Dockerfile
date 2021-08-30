@@ -3,9 +3,9 @@ FROM python:3.9-slim AS server
 RUN mkdir /server
 WORKDIR /server
 
-COPY ./server/requirements/development.txt /server/
+COPY ./server/requirements/production.txt /server/
 RUN pip install pip-tools
-RUN pip-sync development.txt
+RUN pip-sync production.txt
 
 COPY ./server /server
 

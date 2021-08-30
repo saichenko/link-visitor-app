@@ -1,23 +1,26 @@
 Django
 djangorestframework
 
+# Джанговский плагин для Pytest
+# https://pytest-django.readthedocs.io/en/latest/
+pytest-django
+
 # http сервер, который свзявает nginx с django приложением
+# https://gunicorn.org/
 gunicorn
 
 # отладка программ
+# https://github.com/gotcha/ipdb
 ipdb
 
 # Redis бэкенд для Django
+# https://github.com/jazzband/django-redis
 django-redis
 
 # приятная работа в shell
+# https://github.com/ipython/ipython
 ipython
 
-# UI панель для отладки
-django-debug-toolbar
-
-# улучшенные фильтры для DRF
-django-url-filter
-
 # Продвинутый сепаратор URLов
+# https://github.com/john-kurkowski/tldextract
 tldextract
