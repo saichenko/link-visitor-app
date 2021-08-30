@@ -54,5 +54,5 @@ class VisitedDomainsViewSet(GenericViewSet, ListModelMixin):
                 lambda domain: domain[1] < int(param_to),
                 domains
             )
-
+        domains = list(map(lambda domain: domain[0], domains))
         return Response({'domains': domains, 'status': 'ok'}, status=200)
